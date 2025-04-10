@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.dot-typing {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 10px;
+}
+.dot-typing::before,
+.dot-typing::after,
+.dot-typing div {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  animation: dotTyping 1.5s infinite ease-in-out;
+}
+.dot-typing::before {
+  left: 0;
+  animation-delay: 0s;
+}
+.dot-typing div {
+  left: 12px;
+  animation-delay: 0.2s;
+}
+.dot-typing::after {
+  left: 24px;
+  animation-delay: 0.4s;
+}
+
+@keyframes dotTyping {
+  0%, 100% { transform: scale(0.7); opacity: 0.6; }
+  50% { transform: scale(1); opacity: 1; }
+}
