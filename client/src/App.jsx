@@ -10,6 +10,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const chatRef = useRef(null);
 
+  const BACKEND_URL = 'https://role-chat-backend.onrender.com';
+
   const startChat = () => {
     if (!inputPersona.trim()) return;
     setPersona(inputPersona.trim());
@@ -24,7 +26,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/chat', {
+      const res = await fetch(`${BACKEND_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ persona, message: userMsg }),
@@ -40,7 +42,7 @@ function App() {
   };
 
   const resetChat = async () => {
-    await fetch('http://localhost:5000/api/reset', { method: 'POST' });
+    await fetch(`${BACKEND_URL}/api/reset`, { method: 'POST' });
     setChat([]);
     setPersona('');
     setInputPersona('');
